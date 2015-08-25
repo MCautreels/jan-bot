@@ -7,7 +7,6 @@ var janMessages = [
 	'De kunst des levens is tevreden (leren) zijn met het tevredene',
 	'#geholpenmensenzijnmensendiezichzelfhelpeninhetleven',
 	'#echtemannenzorgenvoorhuneigensuccesinhetleven',
-	'#keepyoungfitandhappypeople',
 	'Gewoon "Ja" knikken en het met me eens zijn vriend :)',
 	'#echtemannenmakenzichzelftevreden',
 	'#levenTENVOLLEbeleven',
