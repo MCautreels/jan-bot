@@ -7,13 +7,13 @@
     "start": "node index.js"
   },
   "dependencies": {
-	"node-telegram-bot-api": "*",
-	"facebook-node-sdk": "*"
+    "cleverbot-node": "*",
+    "facebook-node-sdk": "*",
+    "node-telegram-bot-api": "*"
   },
   "engines": {
     "node": "0.12.2"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "license": "CORPORATE"
 }
