@@ -1,1 +1,1 @@
-web: node index.js
+janbot: node index.js
