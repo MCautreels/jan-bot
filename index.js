@@ -11,4 +11,4 @@ bot.on('text', function (msg) {
   // photo can be: a file path, a stream or a Telegram file_id 
 //  var photo = 'cats.png';
   bot.sendMessage(chatId, 'HALLO TEST');
-//});
+});
