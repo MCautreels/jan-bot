@@ -10,15 +10,20 @@ module.exports = function (telegramBot)  {
 	  if(userFirstName === 'Wout') user = 'Van Immerseelke';
 	  if(userFirstName === 'Bart') user = 'Bartje';
 
-	  if((msg.text.toLowerCase().indexOf('goeiemorgen') > -1 || msg.text.toLowerCase().indexOf('goedemorgen') > -1) && msg.text.toLowerCase().indexOf('jan') > -1) {
+	  var message = msg.text.toLowerCase();
+	  if((message.indexOf('goeiemorgen') > -1 || message.indexOf('goedemorgen') > -1) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Goeiemorgen ' + user + '!');
 	  }
 
-	  if((msg.text.toLowerCase().indexOf('goeiemiddag') > -1 || msg.text.toLowerCase().indexOf('goedemiddag') > -1) && msg.text.toLowerCase().indexOf('jan') > -1) {
+	  if((message.indexOf('goeiemiddag') > -1 || message.indexOf('goedemiddag') > -1) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Goedemiddag ' + user + '!');
 	  }
+	  
+	  if((message.indexOf('goeienavond') > -1 || message.indexOf('goedenavond') > -1) && message.indexOf('jan') > -1) {
+	    telegramBot.sendMessage(chatId, 'Goedenavond ' + user + '!');
+	  }
 
-	  if((msg.text.toLowerCase().indexOf('slaapwel') > -1 ) && msg.text.toLowerCase().indexOf('jan') > -1) {
+	  if((message.indexOf('slaapwel') > -1 ) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Slaapwel ' + user + '!');
 	  }
 	});
