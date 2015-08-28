@@ -10,7 +10,7 @@ module.exports = function (telegramBot)  {
 
 	    telegramBot.sendMessage(chatId, message);
 	  }
-	  else if(msg.text.indexOf('#') > -1) {
+	  else if(msg.text.indexOf('#') === 0) {
 		telegramBot.sendMessage(chatId, geefRandomHash());
 	  }
 	  
