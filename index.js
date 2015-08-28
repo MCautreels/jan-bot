@@ -10,3 +10,4 @@ require('./random-quotes')(bot);
 //require('./cleverbot')(bot);
 require('./time-for-work')(bot);
 require('./hashtag-too-short')(bot);
+require('./goodmorning')(bot);
