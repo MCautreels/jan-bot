@@ -8,7 +8,7 @@ module.exports = function (telegramBot)  {
 
 	  if(userFirstName === 'Wouter' && userLastName === 'Thys') user = 'Flappy';
 	  if(userFirstName === 'Wout') user = 'Van Immerseelke';
-	  if(userFirstName === 'Siebe') user = 'oh almachtige god';
+	  if(userFirstName === 'Bart') user = 'Bartje';
 
 	  if((msg.text.toLowerCase().indexOf('goeiemorgen') > -1 || msg.text.toLowerCase().indexOf('goedemorgen') > -1) && msg.text.toLowerCase().indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Goeiemorgen ' + user + '!');
