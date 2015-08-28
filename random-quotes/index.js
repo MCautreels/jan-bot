@@ -17,7 +17,7 @@ module.exports = function (telegramBot)  {
 	});
 
 	var geefRandomHash = function(){
-		var hastags = _.where(janMessages, function(quote){ return quote.indexOf('#') === 0;});
+		var hastags = _.filter(janMessages, function(quote){ return quote.indexOf('#') === 0;});
 		var message = hastags[getRandomNumber(hastags.length) - 1];
 		
 		return message;
