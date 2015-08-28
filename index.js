@@ -10,6 +10,5 @@ require('./random-quotes')(bot);
 //require('./cleverbot')(bot);
 require('./time-for-work')(bot);
 require('./fabulous')(bot);
-require('./hashtag-too-short')(bot);
 require('./goodmorning')(bot);
 require('./jan-de-traffic-man')(bot);
