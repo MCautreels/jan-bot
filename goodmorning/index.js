@@ -26,5 +26,9 @@ module.exports = function (telegramBot)  {
 	  if((message.indexOf('slaapwel') > -1 ) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Slaapwel ' + user + '!');
 	  }
+	  
+	  if((message.indexOf('waar he') > -1 ) && message.indexOf('jan') > -1) {
+	    telegramBot.sendMessage(chatId, 'Dat is waar, vriend!');
+	  }
 	});
 }
