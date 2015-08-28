@@ -13,5 +13,13 @@ module.exports = function (telegramBot)  {
 	  if((msg.text.toLowerCase().indexOf('goeiemorgen') > -1 || msg.text.toLowerCase().indexOf('goedemorgen') > -1) && msg.text.toLowerCase().indexOf('jan')) {
 	    telegramBot.sendMessage(chatId, 'Goeiemorgen ' + user + '!');
 	  }
+
+	  if((msg.text.toLowerCase().indexOf('goeiemiddag') > -1 || msg.text.toLowerCase().indexOf('goedemiddag') > -1) && msg.text.toLowerCase().indexOf('jan')) {
+	    telegramBot.sendMessage(chatId, 'Goedemiddag ' + user + '!');
+	  }
+
+	  if((msg.text.toLowerCase().indexOf('slaapwel') > -1 ) && msg.text.toLowerCase().indexOf('jan')) {
+	    telegramBot.sendMessage(chatId, 'Slaapwel ' + user + '!');
+	  }
 	});
 }
