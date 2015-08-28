@@ -6,7 +6,7 @@ module.exports = function (telegramBot)  {
 
 	  user = userFirstName;
 
-	  if(userFirstName === 'Wouter' && userLastName === 'Thys') user = 'Flappy';
+	  if(userFirstName === 'Wouter' && userLastName === 'Thys') user = 'Walflap';
 	  if(userFirstName === 'Wout') user = 'Van Immerseelke';
 	  if(userFirstName === 'Bart') user = 'Bartje';
 
