@@ -4,13 +4,12 @@ module.exports = function (telegramBot)  {
 	  var userFirstName = msg.from.first_name;
 	  var userLastName = msg.from.last_name;
 
-	  user = userFirstName;
+	  var user = userFirstName;
+	  var message = msg.text.toLowerCase();
 
 	  if(userFirstName === 'Wouter' && userLastName === 'Thys') user = 'Walflap';
 	  if(userFirstName === 'Wout') user = 'Van Immerseelke';
-	  if(userFirstName === 'Bart') user = 'Bartje';
 
-	  var message = msg.text.toLowerCase();
 	  if((message.indexOf('goeiemorgen') > -1 || message.indexOf('goedemorgen') > -1) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Goeiemorgen ' + user + '!');
 	  }
@@ -27,7 +26,8 @@ module.exports = function (telegramBot)  {
 	    telegramBot.sendMessage(chatId, 'Slaapwel ' + user + '!');
 	  }
 	  
-	  if((message.indexOf('waar he') > -1 ) && message.indexOf('jan') > -1) {
+	  var deWaarheidRegEx = /.*waar.*(he|eh).*jan.*/;
+	  if(deWaarheidRegEx.test(message)) {
 	    telegramBot.sendMessage(chatId, 'Dat is waar, vriend!');
 	  }
 	});
