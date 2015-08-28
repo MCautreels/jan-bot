@@ -15,5 +15,8 @@
     "node": "0.12.2"
   },
   "keywords": [],
-  "license": "CORPORATE"
+  "license": "CORPORATE",
+  "devDependencies": {
+    "googlemaps": "^1.0.1"
+  }
 }
