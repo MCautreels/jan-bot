@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "cleverbot-node": "*",
+    "cleverbot.io": "*",
     "facebook-node-sdk": "*",
     "node-telegram-bot-api": "*"
   },
