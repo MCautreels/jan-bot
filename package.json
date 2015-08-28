@@ -9,14 +9,12 @@
   "dependencies": {
     "cleverbot.io": "*",
     "facebook-node-sdk": "*",
-    "node-telegram-bot-api": "*"
+    "node-telegram-bot-api": "*",
+    "googlemaps": "^1.0.1"
   },
   "engines": {
     "node": "0.12.2"
   },
   "keywords": [],
-  "license": "CORPORATE",
-  "devDependencies": {
-    "googlemaps": "^1.0.1"
-  }
+  "license": "CORPORATE"
 }
