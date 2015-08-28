@@ -9,8 +9,9 @@
   "dependencies": {
     "cleverbot.io": "*",
     "facebook-node-sdk": "*",
-    "node-telegram-bot-api": "*",
-    "googlemaps": "^1.0.1"
+    "googlemaps": "^1.0.1",
+    "lodash": "^3.10.1",
+    "node-telegram-bot-api": "*"
   },
   "engines": {
     "node": "0.12.2"
