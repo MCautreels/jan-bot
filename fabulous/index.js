@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 module.exports = function (telegramBot) {
-    console.log("Toggling fabulous feature: ACTIVATED");
+    console.log("Toggling FABULOUS feature: ACTIVATED");
 
     telegramBot.on('text', function (msg) {
         if (msg.text.toLowerCase().indexOf('fabulous') > -1) {
