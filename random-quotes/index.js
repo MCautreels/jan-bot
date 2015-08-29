@@ -1,5 +1,6 @@
 var janMessages = require('./jan-messages');
 var _ = require('lodash');
+var Random = require("random-js");
 
 module.exports = function (telegramBot)  {
 	telegramBot.on('text', function (msg) {
@@ -24,7 +25,7 @@ module.exports = function (telegramBot)  {
 	}
 
 	var getRandomNumber = function (max) {
-		var randomNumber = Math.floor((Math.random() * max) + 1);
-		return randomNumber;
+		var random = new Random(Random.engines.mt19937().autoSeed());
+		return random.integer(0, max);
 	}
 }
