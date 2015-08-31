@@ -11,9 +11,10 @@ module.exports = function (telegramBot) {
             var messageText = msg.text.replace('/weer', '').trim();
 
             weather.now({q: messageText}, function (err, json) {
-                console.error(err);
                 if (err == null) {
                     telegramBot.sendMessage(msg.chat.id, "Vrienden! daar is het " + Math.floor(json['main']['temp']) + " graden. #alsdezonschijntishetmooiweer");
+                } else {
+                    console.error(err);
                 }
             });
         }
