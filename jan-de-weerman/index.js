@@ -8,15 +8,24 @@ module.exports = function (telegramBot) {
 
     telegramBot.on('text', function (msg) {
         if (msg.text.toLowerCase().indexOf('/weer') > -1) {
-            var messageText = msg.text.replace('/weer', '').trim();
+            var userLocation = msg.text.replace('/weer', '').trim();
 
-            weather.now({q: messageText}, function (err, json) {
-                if (err == null) {
-                    telegramBot.sendMessage(msg.chat.id, "Vrienden! daar is het " + Math.floor(json['main']['temp']) + " graden. #alsdezonschijntishetmooiweer");
-                } else {
-                    console.error(err);
+            weather.now({q: userLocation}, function (err, data) {
+                if(data === undefined) {
+                    console.error('No Weather data returned');
                 }
+
+                var statusCode = data.cod;
+                if(statusCode === 200) {                    
+                    var temperature = Math.floor(data.main.temp);
+                    telegramBot.sendMessage(msg.chat.id, "Vrienden! Daar is het " + temperature + " graden. #alsdezonschijntishetmooiweer");
+                    return;
+                } else {
+                    console.error(data.message, userLocation);
+                }
+
+                telegramBot.sendMessage(msg.chat.id, "Vrienden! Die plaats bestaat niet en als ze wel bestaat dan is dat gelogen. #mannendiezichzelfgelovenwetenhetbeter");
             });
-        }
+    }
     });
 }
