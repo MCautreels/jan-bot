@@ -28,11 +28,16 @@ module.exports = function (telegramBot)  {
 	  
 	  var deWaarheidRegEx = /.*waar.*(he|eh).*jan.*/;
 	  if(deWaarheidRegEx.test(message)) {
-		if(Math.random()<.5){
+		if(getRandomNumber(1) === 0){
 			telegramBot.sendMessage(chatId, 'Dat is waar, vriend!');
 		} else {
 			telegramBot.sendMessage(chatId, 'Denk wat je wil, vriend. Ik heb andere zaken te doen, en jij vast ook.');
 		}
 	  }
 	});
+	
+	var getRandomNumber = function (max) {
+		var random = new Random(Random.engines.mt19937().autoSeed());
+		return random.integer(0, max);
+	}
 }
