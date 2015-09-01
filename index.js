@@ -12,3 +12,4 @@ require('./time-for-work')(bot);
 require('./fabulous')(bot);
 require('./goodmorning')(bot);
 require('./jan-de-traffic-man')(bot);
+require('./jan-de-weerman')(bot);

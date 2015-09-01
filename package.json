@@ -12,6 +12,7 @@
     "googlemaps": "^1.0.1",
     "lodash": "^3.10.1",
     "node-telegram-bot-api": "*",
+    "openweathermap": "*",
     "random-js": "*"
   },
   "engines": {
