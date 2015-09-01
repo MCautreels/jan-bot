@@ -18,7 +18,7 @@ module.exports = function (telegramBot) {
                 var statusCode = data.cod;
                 if (statusCode === 200) {
                     var temperature = Math.floor(data.main.temp);
-                    telegramBot.sendMessage(msg.chat.id, "Vrienden! Daar is het " + temperature + " graden. #alsdezonschijntishetmooiweer");
+                    telegramBot.sendMessage(msg.chat.id, "Vrienden! In " + userLocation + " is het " + temperature + " graden. #alsdezonschijntishetmooiweer");
                     return;
                 } else {
                     console.error(data.message, userLocation);
