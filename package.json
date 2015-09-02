@@ -7,6 +7,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "bing-translate": "0.0.2",
     "cleverbot.io": "*",
     "facebook-node-sdk": "*",
     "googlemaps": "^1.0.1",
