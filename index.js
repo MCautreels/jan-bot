@@ -13,3 +13,4 @@ require('./fabulous')(bot);
 require('./goodmorning')(bot);
 require('./jan-de-traffic-man')(bot);
 require('./jan-de-weerman')(bot);
+require('./jan-de-finance-man')(bot);
