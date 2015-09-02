@@ -17,7 +17,7 @@ module.exports = function (telegramBot)  {
 	  if((message.indexOf('goeiemiddag') > -1 || message.indexOf('goedemiddag') > -1) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Goedemiddag ' + user + '!');
 	  }
-	  
+
 	  if((message.indexOf('goeienavond') > -1 || message.indexOf('goedenavond') > -1) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Goedenavond ' + user + '!');
 	  }
@@ -25,17 +25,17 @@ module.exports = function (telegramBot)  {
 	  if((message.indexOf('slaapwel') > -1 ) && message.indexOf('jan') > -1) {
 	    telegramBot.sendMessage(chatId, 'Slaapwel ' + user + '!');
 	  }
-	  
+
 	  var deWaarheidRegEx = /.*waar.*(he|eh).*jan.*/;
 	  if(deWaarheidRegEx.test(message)) {
-		if(getRandomNumber(1) === 0){
+    if(Math.random()<.5){
 			telegramBot.sendMessage(chatId, 'Dat is waar, vriend!');
 		} else {
 			telegramBot.sendMessage(chatId, 'Denk wat je wil, vriend. Ik heb andere zaken te doen, en jij vast ook.');
 		}
 	  }
 	});
-	
+
 	var getRandomNumber = function (max) {
 		var random = new Random(Random.engines.mt19937().autoSeed());
 		return random.integer(0, max);
