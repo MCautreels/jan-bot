@@ -47,7 +47,7 @@ module.exports = function (telegramBot) {
         if (!error && response.statusCode == 200) {
           var result = JSON.parse(body)[currenciesString];
           if(result !== undefined) {
-            var totalResult = result.val * amount;
+            var totalResult = Math.round(result.val * amount * 100) / 100;
             telegramBot.sendMessage(msg.chat.id, 'Ah kameraad, ga je op vakantie? Wel voor ' + amount + ' ' + currencyFrom + ' krijg je ' + totalResult + ' ' + currencyTo);
           }
         }
