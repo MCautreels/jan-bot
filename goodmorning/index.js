@@ -35,9 +35,4 @@ module.exports = function (telegramBot)  {
 		}
 	  }
 	});
-
-	var getRandomNumber = function (max) {
-		var random = new Random(Random.engines.mt19937().autoSeed());
-		return random.integer(0, max);
-	}
 }
