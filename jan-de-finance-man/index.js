@@ -38,16 +38,18 @@ module.exports = function (telegramBot) {
 
       var currencies = inputParams[1].split('->');
 
-      var currencyFrom = currencies[0].trim();
-      var currencyTo = currencies[1].trim();
+      var currencyFrom = currencies[0].trim().toUpperCase();
+      var currencyTo = currencies[1].trim().toUpperCase();
       var currenciesString = currencyFrom + '_' + currencyTo;
       var amount = parseFloat(amountText);
       console.log('Requesting currencies: ', currenciesString);
       request('http://free.currencyconverterapi.com/api/v3/convert?q=' + currenciesString + '&compact=y', function (error, response, body) {
         if (!error && response.statusCode == 200) {
           var result = JSON.parse(body)[currenciesString];
-          var totalResult = result.val * amount;
-          telegramBot.sendMessage(msg.chat.id, 'Ah kameraad, ga je op vakantie? Wel voor ' + amount + ' ' + currencyFrom + ' krijg je ' + totalResult + ' ' + currencyTo);
+          if(result !== undefined) {
+            var totalResult = result.val * amount;
+            telegramBot.sendMessage(msg.chat.id, 'Ah kameraad, ga je op vakantie? Wel voor ' + amount + ' ' + currencyFrom + ' krijg je ' + totalResult + ' ' + currencyTo);
+          }
         }
       });
     }
