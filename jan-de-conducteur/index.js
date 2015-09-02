@@ -77,12 +77,13 @@ module.exports = function (telegramBot) {
       var hours = Math.round(time / 3600);
       var minutes = time % 3600 / 60;
 
-      var timeString;
+      var timeString = '';
       if(hours > 0) {
         timeString = hours + ' uur en ';
       }
+      timeString += minutes + ' minuten';
 
-      return  timeString + minutes + ' minuten';
+      return  timeString;
     }
 
     function formatDateTime(dateTime) {
