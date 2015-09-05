@@ -1,5 +1,6 @@
 var request = require('request');
 var moment = require('moment');
+var utils = require('../utils');
 
 module.exports = function (telegramBot) {
   console.log("Toggling JAN-DE-CONDUCTEUR feature: ACTIVATED");
@@ -48,7 +49,7 @@ module.exports = function (telegramBot) {
       var connectionString = 'Je trein vertrekt in ';
       connectionString += departure.station + ' ';
       connectionString += '(Perron ' + departure.platform + ') ';
-      connectionString += 'om ' + formatDateTime(departureTime) + ' ';
+      connectionString += 'om ' + utils.formatDateTime(departureTime) + ' ';
 
       if(vias !== undefined) {
         connectionString += '. ';
@@ -65,33 +66,12 @@ module.exports = function (telegramBot) {
         }
       }
 
-      connectionString += 'en komt ' + toReadableTime(connection.duration) + ' later aan ';
+      connectionString += 'en komt ' + utils.toReadableTime(connection.duration) + ' later aan ';
       connectionString += 'in ' + arrival.station + ' ';
       connectionString += '(Perron ' + arrival.platform + ') ';
-      connectionString += 'om ' + formatDateTime(arrivalTime);
+      connectionString += 'om ' + utils.formatDateTime(arrivalTime);
 
       return connectionString;
-    }
-
-    function toReadableTime (time) {
-      var hours = Math.round(time / 3600);
-      var minutes = time % 3600 / 60;
-
-      var timeString = '';
-      if(hours > 0) {
-        timeString = hours + ' uur en ';
-      }
-      timeString += minutes + ' minuten';
-
-      return  timeString;
-    }
-
-    function formatDateTime(dateTime) {
-      if(dateTime.isSame(moment(), 'day')) {
-        return dateTime.format('HH:mm');
-      } else {
-        return dateTime.format('D MMM YYYY HH:mm');
-      }
     }
   });
 };
