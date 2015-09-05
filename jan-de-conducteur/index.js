@@ -14,7 +14,7 @@ module.exports = function (telegramBot) {
       var from = parts[0].trim();
       var to = parts[1].trim();
 
-      telegramBot.sendMessage(chatId, 'Even geduld ... Jan de Conducteur haalt de gegevens op');
+      telegramBot.sendMessage(msg.from.id, 'Even geduld ... Jan de Conducteur haalt de gegevens op');
 
       request('http://api.irail.be/connections/?from=' + from + '&to=' + to + '&format=json', function (error, response, body) {
         if (!error && response.statusCode == 200) {
@@ -27,12 +27,12 @@ module.exports = function (telegramBot) {
 
             var connection = result.connection[index];
             var connectionString = parseConnection(connection);
-            telegramBot.sendMessage(msg.chat.id, connectionString);
+            telegramBot.sendMessage(msg.from.id, connectionString);
           }
         } else {
           console.log(error);
           console.log(response);
-          telegramBot.sendMessage(chatId, 'Ik heb niet gevonden wat je zocht, kijk misschien even via www.irail.be');
+          telegramBot.sendMessage(msg.from.id, 'Ik heb niet gevonden wat je zocht, kijk misschien even via www.irail.be');
         }
       });
     }
