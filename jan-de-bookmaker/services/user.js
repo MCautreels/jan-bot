@@ -31,4 +31,13 @@ UserService.prototype.createOrUpdateUser = function (userInput) {
   return User.update({_id: userInput._id}, userInput, {upsert: true});
 };
 
+/**
+ * Return all users sorted by scores, highest score first
+ *
+ * @returns {Promise}
+ */
+UserService.prototype.getAllUsersSortedByScore = function () {
+  return User.find({}).sort({'score': -1}).exec();
+};
+
 module.exports = UserService;

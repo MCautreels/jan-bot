@@ -27,6 +27,8 @@ module.exports = function (telegramBot) {
       addBet();
     } else if (messageText.indexOf('/upcominggames') > -1) {
       showUpcomingGames();
+    } else if (messageText.indexOf('/betscore') > -1) {
+      showScores();
     }
 
     /**
@@ -90,6 +92,18 @@ module.exports = function (telegramBot) {
               telegramBot.sendMessage(userId, 'Voetbalkameraad, laat me niet onnodig werken. Deze voorspelling had je al gemaakt!');
             }
           });
+        }
+      });
+    }
+
+    // /betscores
+    function showScores () {
+      userService.getAllUsersSortedByScore().then(function (users) {
+        for (var index in users) {
+          var user = users[index];
+          var score = user.score || 0;
+
+          telegramBot.sendMessage(chatId, user.firstName + ' heeft een score van ' + score);
         }
       });
     }
