@@ -2,7 +2,7 @@ var TelegramBot = require('node-telegram-bot-api');
 
 console.log("Starting up!");
 
-var token = '139991938:AAHdzUrdOCxAL1kZ5tt1-nqBelCxMBItPoc';
+var token = '139991938:AAGnAAN-bjGUmRlvlqRQQv0VKkxPVq1IOPI';
 
 var bot = new TelegramBot(token, {polling: true});
 
