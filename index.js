@@ -16,5 +16,3 @@ require('./jan-de-weerman')(bot);
 require('./jan-de-finance-man')(bot);
 require('./jan-de-conducteur')(bot);
 require('./jan-de-bookmaker')(bot);
-require('./jan-de-bookmaker/notifier')(bot);
-

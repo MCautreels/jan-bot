@@ -1,11 +1,10 @@
-// Setup Frontend
-//var web = require('./web');
-//web.init();
-
 // Setup Chat Commands
 var utils = require('../utils');
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/janbot');
+
+// Setup Scheduler
+var scheduler = require('./scheduler')(mongoose);
 
 // Setup Services
 var UserService = require('./services/user');
@@ -16,7 +15,7 @@ var BetService = require('./services/bet');
 var betService = new BetService(mongoose);
 
 module.exports = function (telegramBot) {
-  console.log("Toggling JAN-DE-BOOKMAKER feature: ACTIVATED");
+  console.log("Toggling JAN-DE-BOOKMAKER feature: ACTIVATED");;
 
   telegramBot.on('text', function (msg) {
     var chatId = msg.chat.id;
@@ -66,20 +65,20 @@ module.exports = function (telegramBot) {
       var message = msg.text.replace('/addbet', '');
 
       var messageParts = message.trim().split(' ');
-      var gameCode = messageParts[0];
+      var gameId = messageParts[0];
       var scoreParts = messageParts[1].split('-');
 
       var scoreHome = scoreParts[0];
       var scoreAway = scoreParts[1];
 
-      gameService.findGameByCode(gameCode).then(function (game) {
+      gameService.findGameByEspnfc(gameId).then(function (game) {
         if (game === null) {
           telegramBot.sendMessage(userId, 'Voetbalkameraad, deze match kon ik niet vinden.');
         } else if (game.date < new Date()) {
           telegramBot.sendMessage(userId, 'Voetbalkameraad, deze match is al begonnen of zelfs afgelopen, nu is het te laat om te gokken!');
         } else {
           betService.createOrUpdateBet({
-            gameCode: gameCode,
+            gameId: gameId,
             scoreHome: scoreHome,
             scoreAway: scoreAway,
             userId: userId
@@ -114,7 +113,7 @@ module.exports = function (telegramBot) {
 
         game = formatTeamNames(game);
 
-        var gameString = game.gameCode + ': ';
+        var gameString = game.espnfcId + ': ';
         gameString += game.teamHome + ' speelt tegen ' + game.teamAway;
         gameString += ' op ' + utils.formatDateTime(game.date);
 

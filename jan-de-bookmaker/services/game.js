@@ -10,15 +10,25 @@ var moment = require('moment');
  * @param mongoose An initialized mongoose instance
  */
 var GameService = function (mongoose) {
-  Game = mongoose.model('Game', {
-    gameCode: String,
-    date: Date,
-    teamHome: String,
-    teamAway: String,
-    resultHome: Number,
-    resultAway: Number,
-    state: String
-  });
+  try {
+    Game = mongoose.model('Game');
+  } catch (err) {
+    Game = mongoose.model('Game', {
+      espnfcId: Number,
+      date: Date,
+      teamHome: String,
+      teamAway: String,
+      resultHome: Number,
+      resultAway: Number,
+      state: String
+    });
+  }
+};
+
+GameService.prototype.STATUSES = {
+  SCHEDULED: 'SCHEDULED',
+  FINISHED: 'FINISHED',
+  PROCESSED: 'PROCESSED'
 };
 
 /**
@@ -32,13 +42,13 @@ GameService.prototype.findGame = function (gameId) {
 };
 
 /**
- * Retrieves the game by the given gameCode
+ * Retrieves the game by the given espnfcId
  *
- * @param gameCode code which identifies a game
+ * @param gameCode espnfcId which identifies a game
  * @returns {Promise} promise of the select
  */
-GameService.prototype.findGameByCode = function (gameCode) {
-  return Game.findOne({gameCode: gameCode});
+GameService.prototype.findGameByEspnfc = function (espnfcId) {
+  return Game.findOne({espnfcId: espnfcId});
 };
 
 /**
@@ -51,11 +61,37 @@ GameService.prototype.findUpcomingGames = function (numberOfGames) {
   return Game.find({'date': {'$gt': new Date()}}).sort({'date': 1}).limit(numberOfGames).exec();
 };
 
+/**
+ * Retrieves the Games which take place on a given date.
+ *
+ * @param date date on which the matches should take place
+ * @returns {Query|FindOperatorsOrdered|*|Cursor|FindOperatorsUnordered}
+ */
 GameService.prototype.findGamesByDate = function (date) {
   var startOf = moment(date).startOf('day').toDate();
   var endOf = moment(date).endOf('day').toDate();
 
   return Game.find({'date': {'$gt': startOf, '$lt': endOf}});
-}
+};
+
+/**
+ * Returns a list of Games that are in the given status
+ *
+ * @param status status to use as a filter
+ * @returns {Promise} promise which returns the requested games
+ */
+GameService.prototype.findByStatus = function (status) {
+  return Game.find({status: status});
+};
+
+/**
+ * Creates or updates a game
+ *
+ * @param game the given game will be created
+ * @returns {Promise} promise which returns the created game
+ */
+GameService.prototype.createOrUpdate = function (game) {
+  return Game.update({espnfcId: game.espnfcId}, game, {upsert: true});
+};
 
 module.exports = GameService;

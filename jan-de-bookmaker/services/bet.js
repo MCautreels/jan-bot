@@ -8,7 +8,16 @@ var Bet;
  * @param mongoose An initialized mongoose instance
  */
 var BetService = function (mongoose) {
-  Bet = mongoose.model('Bet', {gameCode: String, scoreHome: Number, scoreAway: Number, userId: Number});
+  try {
+    Bet = mongoose.model('Bet');
+  } catch (err) {
+    Bet = mongoose.model('Bet', {
+      gameId: Number,
+      scoreHome: Number,
+      scoreAway: Number,
+      userId: Number
+    });
+  }
 };
 
 /**
@@ -28,8 +37,8 @@ BetService.prototype.findBet = function (betId) {
  * @param gameCode gameCode to identify the bet
  * @returns {Promise} promise return the found bet
  */
-BetService.prototype.findBetByUserIdAndGameCode = function (userId, gameCode) {
-  return Bet.findOne({'gameCode': gameCode, 'userId': userId});
+BetService.prototype.findBetByUserIdAndGameCode = function (userId, gameId) {
+  return Bet.findOne({'gameId': gameId, 'userId': userId});
 };
 
 /**

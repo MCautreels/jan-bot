@@ -8,7 +8,16 @@ var User;
  * @param mongoose An initialized mongoose instance
  */
 var UserService = function (mongoose) {
-  User = mongoose.model('User', {_id: Number, score: Number, firstName: String, lastName: String});
+  try {
+    User = mongoose.model('User');
+  } catch (err) {
+    User = mongoose.model('User', {
+      _id: Number,
+      score: Number,
+      firstName: String,
+      lastName: String
+    });
+  }
 };
 
 /**
