@@ -23,7 +23,7 @@
     "request": "^2.61.0"
   },
   "engines": {
-    "node": "0.12.2"
+    "node": "4.8.4"
   },
   "keywords": [],
   "license": "CORPORATE"
